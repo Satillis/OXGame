@@ -23,16 +23,13 @@ int main()
 	int p1Color = 91;
 	int p2Color = 94;
 
-	float p1Score[3]{};
-	float p2Score[3]{};
-	float comScore[3]{};
-
 	float stats[3][3]{};
 
 	while (true)
 	{
 		char gameSymbols[3]{ ' ',p1Symbol,p2Symbol };
 		int inGameColor[3]{ 0,p1Color,p2Color };
+		string players[3]{ "Комптютер", player1,player2 };
 
 		int grid[3][3]{};
 
@@ -155,6 +152,41 @@ int main()
 						{
 							stats[0][1]++;
 							stats[int((hodCounter + 1) % 2 + 2 * pow(0, (hodCounter + 1) % 2))][0]++;
+							hodCounter = -1;
+
+							cellNum = 1;
+							system("cls");
+							cout << " + | Крестики нолики\n\n";
+
+							for (int i = 0; i < 3; i++)
+							{
+								cout << "\t- - - - - - -\n";
+								cout << "\t| ";
+
+								for (int j = 0; j < 3; j++)
+								{
+
+									if (!grid[i][j])
+									{
+										cout << cellNum << " | ";
+									}
+									else
+									{
+										cout << "\x1b[" << inGameColor[grid[i][j]] << "m" << gameSymbols[grid[i][j]] << "\x1b[0m | ";
+									}
+
+									cellNum++;
+
+								}
+
+								cout << "\n";
+
+							}
+
+							cout << "\t- - - - - - -\n\n";
+							cout << "\nПобедил " << player1;
+							Sleep(2500);
+
 							break;
 						}
 
@@ -173,10 +205,47 @@ int main()
 						}
 
 						if ((grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][0] && grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][1] && grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][2]) ||
-							(grid[0][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[1][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[2][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3]))
+							(grid[0][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[1][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[2][(botStartPos - 1) % 3] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3]) ||
+							(grid[0][0] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[1][1] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[2][2] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3]) ||
+							(grid[0][2] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[1][1] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3] && grid[2][0] == grid[(botStartPos - 1) / 3][(botStartPos - 1) % 3]))
 						{
 							stats[1][1]++;
 							stats[0][0]++;
+							hodCounter = -1;
+							cellNum = 1;
+							system("cls");
+							cout << " + | Крестики нолики\n\n";
+
+							for (int i = 0; i < 3; i++)
+							{
+								cout << "\t- - - - - - -\n";
+								cout << "\t| ";
+
+								for (int j = 0; j < 3; j++)
+								{
+
+									if (!grid[i][j])
+									{
+										cout << cellNum << " | ";
+									}
+									else
+									{
+										cout << "\x1b[" << inGameColor[grid[i][j]] << "m" << gameSymbols[grid[i][j]] << "\x1b[0m | ";
+									}
+
+									cellNum++;
+
+								}
+
+								cout << "\n";
+
+							}
+
+							cout << "\t- - - - - - -\n\n";
+							cout << "Победил Компьютер";
+
+							Sleep(2500);
+
 							break;
 						}
 
@@ -186,6 +255,40 @@ int main()
 					{
 						stats[1][2]++;
 						stats[0][2]++;
+
+						cellNum = 1;
+						system("cls");
+						cout << " + | Крестики нолики\n\n";
+
+						for (int i = 0; i < 3; i++)
+						{
+							cout << "\t- - - - - - -\n";
+							cout << "\t| ";
+
+							for (int j = 0; j < 3; j++)
+							{
+
+								if (!grid[i][j])
+								{
+									cout << cellNum << " | ";
+								}
+								else
+								{
+									cout << "\x1b[" << inGameColor[grid[i][j]] << "m" << gameSymbols[grid[i][j]] << "\x1b[0m | ";
+								}
+
+								cellNum++;
+
+							}
+
+							cout << "\n";
+
+						}
+
+						cout << "\t- - - - - - -\n\n";
+
+						cout << "\nНичья";
+						Sleep(2500);
 					}
 
 					break;
@@ -250,6 +353,44 @@ int main()
 						{
 							stats[int(hodCounter % 2 + 2 * pow(0, hodCounter % 2))][1]++;
 							stats[int((hodCounter + 1) % 2 + 2 * pow(0, (hodCounter + 1) % 2))][0]++;
+
+
+							cellNum = 1;
+							system("cls");
+							cout << " + | Крестики нолики\n\n";
+
+							for (int i = 0; i < 3; i++)
+							{
+								cout << "\t- - - - - - -\n";
+								cout << "\t| ";
+
+								for (int j = 0; j < 3; j++)
+								{
+
+									if (!grid[i][j])
+									{
+										cout << cellNum << " | ";
+									}
+									else
+									{
+										cout << "\x1b[" << inGameColor[grid[i][j]] << "m" << gameSymbols[grid[i][j]] << "\x1b[0m | ";
+									}
+
+									cellNum++;
+
+								}
+
+								cout << "\n";
+
+							}
+
+							cout << "\t- - - - - - -\n\n";
+
+							cout << "\nПобедил игрок " << players[int((hodCounter + 1) % 2 + 2 * pow(0, (hodCounter + 1) % 2))];
+							hodCounter = -1;
+
+							Sleep(2500);
+
 							break;
 						}
 
@@ -260,6 +401,40 @@ int main()
 					{
 						stats[1][2]++;
 						stats[2][2]++;
+
+						cellNum = 1;
+						system("cls");
+						cout << " + | Крестики нолики\n\n";
+
+						for (int i = 0; i < 3; i++)
+						{
+							cout << "\t- - - - - - -\n";
+							cout << "\t| ";
+
+							for (int j = 0; j < 3; j++)
+							{
+
+								if (!grid[i][j])
+								{
+									cout << cellNum << " | ";
+								}
+								else
+								{
+									cout << "\x1b[" << inGameColor[grid[i][j]] << "m" << gameSymbols[grid[i][j]] << "\x1b[0m | ";
+								}
+
+								cellNum++;
+
+							}
+
+							cout << "\n";
+
+						}
+
+						cout << "\t- - - - - - -\n\n";
+						cout << "\nНичья";
+						Sleep(2500);
+
 					}
 
 					break;
